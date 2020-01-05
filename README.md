@@ -5,3 +5,5 @@ wikipedia corpus: https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-abstra
 GloVe 的 wiki 预训练: http://nlp.stanford.edu/data/glove.6B.zip
 ### 中文
 职业名称: https://github.com/imhuster/funNLP/blob/master/data/%E8%81%8C%E4%B8%9A%E8%AF%8D%E5%BA%93/professions.txt <br>
+
+已确定用中文来做。下一步是将语料中的职业名称控制在 10 个字及以下。
