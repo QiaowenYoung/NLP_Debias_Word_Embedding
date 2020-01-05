@@ -8,4 +8,5 @@ GloVe 的 wiki 预训练: http://nlp.stanford.edu/data/glove.6B.zip
 
 已确定用中文来做。<br>
 原始语料共有7569个职业。
-下一步是将语料中的职业名称控制在 10 个字及以下。
+将语料中的职业名称控制在 10 个字及以下后，剩余 6258 个职业。预处理代码在preprocess.ipynb<br>
+下一步是用 word2vec 训练语料。<br>
