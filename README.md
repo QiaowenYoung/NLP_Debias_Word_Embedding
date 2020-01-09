@@ -15,7 +15,7 @@ GloVe 的 wiki 预训练: http://nlp.stanford.edu/data/glove.6B.zip
 2. 使用[生语料](https://dumps.wikimedia.org/zhwiki/latest/zhwiki-latest-pages-articles-multistream.xml.bz2)结合 word2vec 训练模型<br>
 ```
 sudo pip3 install gensim
-python3 xml2vec.py zhwiki-latest-pages-articles-multistream1.xml-p1p162886.bz2 wiki.zh.txt
+python3 xml2vec.py zhwiki-latest-pages-articles-multistream.xml.bz2 wiki.zh.txt
 brew install opencc
 opencc -i wiki.zh.txt -o wiki.zh.txt.jian -c t2s.json
 ```
