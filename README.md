@@ -20,5 +20,9 @@ brew install opencc
 opencc -i wiki.zh.txt -o wiki.zh.txt.jian -c t2s.json
 ```
 之后调用 [wikiprocess.ipynb](https://github.com/QiaowenYoung/NLP_Debias_Word_Embedding/blob/master/wikiprocess.ipynb) 训练出模型并保存
-3. 纠偏算法<br>
-利用 2 中得到的模型取出 10 对具有确定性别指向的词对（如：男->女，他->她，国王->王后），作为定义集。求出每个定义集中词向量的均值，这个平均词向量应当
+3. 性别子空间<br>
+利用 2 中得到的模型取出 10 对具有确定性别指向的词对（如：男->女，他->她，国王->王后），作为定义集。求出每个定义集中词向量的均值，再相加，得到一个矩阵。取其奇异值分解矩阵的前 k 行，得到维度为 k 的子空间<br>
+奇异值分解的算法参考: https://www.cnblogs.com/Shinered/p/9206210.html <br>
+4. 纠偏处理<br>
+对每一个在 word2vec 词向量词典中的词，若其是职业词，则按照取其在子空间上的垂直分量的单位向量作为新的词向量。用此办法完成纠偏<br>
+5. 性能评价<br>
