@@ -11,11 +11,11 @@ GloVe 的 wiki 预训练: http://nlp.stanford.edu/data/glove.6B.zip
 ## 实验步骤
 1. 使用[预训练词向量](https://github.com/Embedding/Chinese-Word-Vectors)<br>
 [原始语料](https://github.com/QiaowenYoung/NLP_Debias_Word_Embedding/blob/master/professions.txt)共有7569个职业，
-调用 [getFromPretrained.ipynb] (https://github.com/QiaowenYoung/NLP_Debias_Word_Embedding/blob/master/getFromPretrained.ipynb)得到预处理语料中，和“他”&“她”余弦距离最近的十个职业词汇<br>
-2. 使用[生语料](https://dumps.wikimedia.org/zhwiki/latest/)结合 word2vec 训练模型<br>
+调用 [getFromPretrained.ipynb](https://github.com/QiaowenYoung/NLP_Debias_Word_Embedding/blob/master/getFromPretrained.ipynb)得到预处理语料中，和“他”&“她”余弦距离最近的十个职业词汇<br>
+2. 使用[生语料](https://dumps.wikimedia.org/zhwiki/latest/zhwiki-latest-pages-articles-multistream.xml.bz2)结合 word2vec 训练模型<br>
 ```
 sudo pip3 install gensim
-python3 xml2vec.py zhwiki-latest-pages-articles-multistream1.xml-p1p162886.bz2 wiki.zh.txt
+python3 xml2vec.py zhwiki-latest-pages-articles-multistream.xml.bz2 wiki.zh.txt
 brew install opencc
 opencc -i wiki.zh.txt -o wiki.zh.txt.jian -c t2s.json
 ```
