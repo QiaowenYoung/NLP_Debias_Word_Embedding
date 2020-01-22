@@ -9,11 +9,11 @@ GloVe 的 wiki 预训练: http://nlp.stanford.edu/data/glove.6B.zip
 生语料: https://dumps.wikimedia.org/zhwiki/latest/ <br>
 已确定用中文来做。<br>
 ## 实验步骤
-1. 使用[预训练词向量](https://github.com/Embedding/Chinese-Word-Vectors)<br>
+### 使用[预训练词向量](https://github.com/Embedding/Chinese-Word-Vectors)<br>
 [原始语料](https://github.com/QiaowenYoung/NLP_Debias_Word_Embedding/blob/master/professions.txt)共有 7569 个职业，
 调用 [getFromPretrained.ipynb](https://github.com/QiaowenYoung/NLP_Debias_Word_Embedding/blob/master/getFromPretrained.ipynb)得到预处理语料中，和“他”&“她”余弦距离最近的十个职业词汇<br>
 这一步的成果并不明显。<br>
-2. 使用[生语料](https://dumps.wikimedia.org/zhwiki/latest/zhwiki-latest-pages-articles-multistream.xml.bz2)结合 word2vec 训练模型<br>
+### 使用[生语料](https://dumps.wikimedia.org/zhwiki/latest/zhwiki-latest-pages-articles-multistream.xml.bz2)结合 word2vec 训练模型<br>
 ```
 sudo pip3 install gensim
 python3 xml2vec.py zhwiki-latest-pages-articles-multistream.xml.bz2 wiki.zh.txt
@@ -47,10 +47,10 @@ opencc -i wiki.zh.txt -o wiki.zh.txt.jian -c t2s.json
 药剂师 0.31823986768722534
 ```
 不仅男性和女性的职业偏向有性别相关性，女性与其偏向职业的关联度也更强。较强地反映了 word2vec 在处理中文时的性别偏向。<br>
-3. 性别子空间 <b>ongoing</b><br>
+### 性别子空间 <b>ongoing</b><br>
 利用 2 中得到的模型取出 10 对具有确定性别指向的词对（如：男->女，他->她，国王->王后），作为定义集。求出每个定义集中词向量的均值，再相加，得到一个矩阵。取其奇异值分解矩阵的前 k 行，得到维度为 k 的子空间<br>
 奇异值分解的算法参考: https://www.cnblogs.com/Shinered/p/9206210.html <br>
 目前用子空间处理的方法并未显示出纠偏效果，而沿着单个性别方向的纠偏过度，反映为男性和女性的偏向职业全部一致。<br>
-4. 纠偏处理 <b>ongoing</b><br>
+### 纠偏处理 <b>ongoing</b><br>
 对每一个在 word2vec 词向量词典中的词，若其是职业词，则按照取其在子空间上的垂直分量的单位向量作为新的词向量。用此办法完成纠偏<br>
-5. 性能评价 <b>ongoing</b><br>
+### 性能评价 <b>ongoing</b><br>
