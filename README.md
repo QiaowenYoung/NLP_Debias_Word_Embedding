@@ -46,11 +46,11 @@ opencc -i wiki.zh.txt -o wiki.zh.txt.jian -c t2s.json
 飞行员 0.3289238214492798
 药剂师 0.31823986768722534
 ```
-不仅男性和女性的职业偏向有性别相关性，女性与其偏向职业的关联度也更强。较强地反映了 word2vec 在处理中文时的性别偏向。<br>
+不仅男性和女性的职业偏向有性别相关性，女性与其偏向职业的关联度也更强。较强地反映了 word2vec 在处理中文时的性别偏向<br>
 ### 性别子空间 <b>ongoing</b><br>
 利用 2 中得到的模型取出 10 对具有确定性别指向的词对（如：男->女，他->她，国王->王后），作为定义集。求出每个定义集中词向量的均值，再相加，得到一个矩阵。取其奇异值分解矩阵的前 k 行，得到维度为 k 的子空间<br>
 奇异值分解的算法参考: https://www.cnblogs.com/Shinered/p/9206210.html <br>
-目前用[子空间](https://github.com/QiaowenYoung/NLP_Debias_Word_Embedding/blob/master/debias.ipynb)处理的方法并未显示出纠偏效果，而沿着[单个性别方向](https://github.com/QiaowenYoung/NLP_Debias_Word_Embedding/blob/master/debias_on_direction.ipynb)的纠偏过度，反映为男性和女性的偏向职业全部一致。我可能做不出来了，欢迎提供帮助。<br>
 ### 纠偏处理 <b>ongoing</b><br>
 对每一个在 word2vec 词向量词典中的词，若其是职业词，则按照取其在子空间上的垂直分量的单位向量作为新的词向量。用此办法完成纠偏<br>
+目前用[子空间](https://github.com/QiaowenYoung/NLP_Debias_Word_Embedding/blob/master/debias.ipynb)处理的方法并未显示出纠偏效果，而沿着[单个性别方向](https://github.com/QiaowenYoung/NLP_Debias_Word_Embedding/blob/master/debias_on_direction.ipynb)的纠偏过度，反映为男性和女性的偏向职业全部一致。我可能做不出来了，欢迎提供帮助<br>
 ### 性能评价 <b>ongoing</b><br>
