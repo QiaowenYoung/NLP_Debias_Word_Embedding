@@ -21,7 +21,7 @@ brew install opencc
 opencc -i wiki.zh.txt -o wiki.zh.txt.jian -c t2s.json
 ```
 之后调用 [wikiprocess.ipynb](https://github.com/QiaowenYoung/NLP_Debias_Word_Embedding/blob/master/wikiprocess.ipynb) 训练出模型并保存<br>
-训练的结果为：
+[训练的结果](https://github.com/QiaowenYoung/NLP_Debias_Word_Embedding/blob/master/wiki.zh.he_she.txt)：
 ```
 他:
 知识分子 0.37548497319221497
